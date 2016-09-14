@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="../css/bootstrapSwitch.css">
+<link rel="stylesheet" href="../css/bootstrap-dialog.min.css">
+<link rel="stylesheet" href="../css/icheck/square/blue.css">
+<link rel="stylesheet" href="../css/datetimepicker.css">
+<link rel="stylesheet" href="../css/style.css">
+<!--[if lt IE 9]>
+<script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="nav-logo"></div>
+      <span class="nav-username">欢迎：管理员</span>
+      <div class="nav-logout">退出</div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="icon-1"><a href="#">权限管理</a></li>
+          <li class="sub"><a href="main.html">用户列表</a></li>
+          <li class="sub"><a href="table.html">菜单列表</a></li>
+          <li class="sub"><a href="statistics.html">角色列表</a></li>
+        </ul>
+        <ul class="nav nav-sidebar checked">
+          <li class="icon-2"><a href="#">内容获取</a></li>
+          <li class="sub"><a href="edit.html">媒资内容</a></li>
+          <li class="sub checked"><a href="#">在线内容</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="icon-3"><a href="#">内容聚合</a></li>
+          <li class="sub"><a href="#">聚合管理</a></li>
+          <li class="sub"><a href="#">剧情管理</a></li>
+          <li class="sub"><a href="#">标签管理</a></li>
+          <li class="sub"><a href="#">告警配置</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="icon-4"><a href="#">节目管理</a></li>
+          <li class="sub"><a href="#">频道列表</a></li>
+          <li class="sub"><a href="#">节目列表</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="icon-5"><a href="#">统计报表</a></li>
+          <li class="sub"><a href="#">统计详情</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="icon-6"><a href="#">版权管理</a></li>
+          <li class="sub"><a href="#">版权列表</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li class="icon-7"><a href="#">属性管理</a></li>
+          <li class="sub"><a href="#">类型管理</a></li>
+          <li class="sub"><a href="#">题材管理</a></li>
+          <li class="sub"><a href="#">地区管理</a></li>
+          <li class="sub"><a href="#">敏感词管理</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="btn btn-danger" id="btn1">一个按钮</div>
+        <div class="btn btn-danger" id="btn2">两个按钮</div>
+        <div class="btn btn-danger" id="btn3">三个按钮</div>
+        <div class="btn btn-danger" id="btn4">带输入框</div>
+        <div class="btn btn-danger" id="btn5">自定义 - 文字列表</div>
+        <div class="btn btn-danger" id="btn6">自定义 - 图文混合</div>
+        <div class="btn btn-danger" id="btn7">自定义 - 多页</div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrapSwitch.js"></script>
+<script src="../js/bootstrap-dialog.min.js"></script>
+<script src="../js/icheck.min.js"></script>
+<script src="../js/bootstrap-datetimepicker.js"></script>
+
+<script src="../js/main.js"></script>
+<script>
+//弹框调用示例
+$('#btn1').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message : '只有一个按钮的弹框',
+    type: BootstrapDialog.TYPE_DEFAULT,
+    size : BootstrapDialog.SIZE_SMALL,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了确定');
+        }
+    }]
+  });
+});
+$('#btn2').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message: '两个按钮的弹框',
+    type: BootstrapDialog.TYPE_DEFAULT,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了确定');
+        }
+    },{
+        label: '取消',
+        cssClass: 'btn-default',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了取消');
+        }
+    }]
+  });
+});
+$('#btn3').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message: '三个按钮的弹框',
+    type: BootstrapDialog.TYPE_DEFAULT,
+    buttons: [{
+        label: '按钮一',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了按钮一');
+        }
+    },{
+        label: '按钮二',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了按钮二');
+        }
+    },{
+        label: '按钮三',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了按钮三');
+        }
+    }]
+  });
+});
+
+var html4 = 
+'<p>带输入框的对话框：</p>'
++'<input type="text" class="form-control" id="pop-input">';
+$('#btn4').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message : $( html4 ),
+    type: BootstrapDialog.TYPE_DEFAULT,
+    size : BootstrapDialog.SIZE_SMALL,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          var val = $.trim( $('#pop-input').val() );
+          dialogRef.close();
+          alert('用户点击了确定，输入框中的值为' + val);
+        }
+    },{
+        label: '取消',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          var val = $.trim( $('#pop-input').val() );
+          dialogRef.close();
+          alert('用户点击了取消，输入框中的值为' + val);
+        }
+    }]
+  });
+});
+
+var html5 = 
+'<div class="row">'
++'  <div class="col-md-6 col-sm-6">'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'  </div>'
++'  <div class="col-md-6 col-sm-6">'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'  </div>'
++'</div>';
+$('#btn5').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message : $( html5 ),
+    type: BootstrapDialog.TYPE_DEFAULT,
+    size: BootstrapDialog.SIZE_WIDE,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了确定');
+        }
+    }]
+  });
+});
+
+var html6 = 
+'<div class="row">'
++'  <div class="col-md-4 col-sm-4">'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'  </div>'
++'  <div class="col-md-4 col-sm-4">'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'    <div class="pop-row">'
++'      <div class="pop-l">栏目名称：</div>'
++'      <div class="pop-r">内容内容内容</div>'
++'    </div>'
++'  </div>'
++'  <div class="col-md-4 col-sm-4">'
++'    <div class="pop-pic">'
++'      <img src="../img/eg.jpg" class="img-responsive">'
++'    </div>'
++'    <div class="pop-desc">内容内容内容容内容内容内容内容内容内内容内容内容内内容内容内容内</div>'
++'  </div>'
++'</div>';
+$('#btn6').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message : $( html6 ),
+    type: BootstrapDialog.TYPE_DEFAULT,
+    size: BootstrapDialog.SIZE_WIDE,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了确定');
+        }
+    }]
+  });
+});
+
+var html7 = 
+'<ul class="nav nav-tabs">'
++'  <li class="active"><a href="#nav-txt" data-toggle="tab">文字列表</a></li>'
++'  <li><a href="#nav-pic" data-toggle="tab">图文混合</a></li>'
++'  <li><a href="#nav-table" data-toggle="tab">表格</a></li>'
++'</ul>'
++'<div class="tab-content">'
++'  <div class="tab-pane fade in active" id="nav-txt">'
++'    <div class="row">'
++'      <div class="col-md-6 col-sm-6">'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'      </div>'
++'      <div class="col-md-6 col-sm-6">'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'      </div>'
++'    </div>'
++'  </div>'
++'  <div class="tab-pane fade" id="nav-pic">'
++'    <div class="row">'
++'      <div class="col-md-4 col-sm-4">'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">容内容内容内内容内容内容内容内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'      </div>'
++'      <div class="col-md-4 col-sm-4">'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'        <div class="pop-row">'
++'          <div class="pop-l">栏目名称：</div>'
++'          <div class="pop-r">内容内容内容</div>'
++'        </div>'
++'      </div>'
++'      <div class="col-md-4 col-sm-4">'
++'        <div class="pop-pic">'
++'          <img src="../img/eg.jpg" class="img-responsive">'
++'        </div>'
++'        <div class="pop-desc">内容内容内容容内容内容内容内容内</div>'
++'      </div>'
++'    </div>'
++'  </div>'
++'  <div class="tab-pane fade" id="nav-table">'
++'    <div class="table-responsive">'
++'      <table class="table table-striped">'
++'        <thead>'
++'          <tr>'
++'            <th>栏目名称</th>'
++'            <th>栏目名称</th>'
++'            <th>栏目名称</th>'
++'            <th>栏目名称</th>'
++'            <th>栏目名称</th>'
++'          </tr>'
++'        </thead>'
++'        <tbody>'
++'          <tr>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>'
++'              <div class="btn-group" role="group" aria-label="...">'
++'                <button type="button" class="btn btn-default">修改</button>'
++'                <button type="button" class="btn btn-default">标签</button>'
++'              </div>'
++'            </td>'
++'          </tr>'
++'          <tr>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>'
++'              <div class="btn-group" role="group" aria-label="...">'
++'                <button type="button" class="btn btn-default">修改</button>'
++'                <button type="button" class="btn btn-default">标签</button>'
++'              </div>'
++'            </td>'
++'          </tr>'
++'          <tr>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>栏目名称</td>'
++'            <td>'
++'              <div class="btn-group" role="group" aria-label="...">'
++'                <button type="button" class="btn btn-default">修改</button>'
++'                <button type="button" class="btn btn-default">标签</button>'
++'              </div>'
++'            </td>'
++'          </tr>'
++'        </tbody>'
++'      </table>'
++'    </div>'
++'    <div class="under-table">'
++'      <ul class="pagination">'
++'        <li><a href="#">上一页</a></li>'
++'        <li class="active"><a href="#">1</a></li>'
++'        <li><a href="#">2</a></li>'
++'        <li><a href="#">3</a></li>'
++'        <li><a href="#">4</a></li>'
++'        <li><a href="#">5</a></li>'
++'        <li><a href="#">下一页</a></li>'
++'      </ul>'
++'      <b class="total-page">共<b>2235</b>条记录</b>'
++'    </div>'
++'  </div>'
++'</div>';
+$('#btn7').on('click', function(){
+  BootstrapDialog.show({
+    title : '弹框标题',
+    message : $( html7 ),
+    type: BootstrapDialog.TYPE_DEFAULT,
+    size: BootstrapDialog.SIZE_WIDE,
+    buttons: [{
+        label: '确定',
+        cssClass: 'btn-danger',
+        action: function(dialogRef){
+          dialogRef.close();
+          alert('用户点击了确定');
+        }
+    }]
+  });
+});
+
+</script>
+</html>

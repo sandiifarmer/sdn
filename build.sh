@@ -1,0 +1,9 @@
+cd css/
+lessc style.less > style.css
+echo less2css completed...
+
+cd ../node/
+node build
+echo build completed...
+echo Press ENTER to quit...
+read
